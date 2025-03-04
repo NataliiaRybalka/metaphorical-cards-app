@@ -11,37 +11,37 @@ import Entypo from '@expo/vector-icons/Entypo';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+	const colorScheme = useColorScheme();
 
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Внутренний компас',
-          tabBarIcon: () => <Entypo name="compass" size={24} color="black" />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Точка опоры',
-          tabBarIcon: () => <FontAwesome5 name="fulcrum" size={28} color="black" />,
-        }}
-      />
-    </Tabs>
-  );
+	return (
+		<Tabs
+		screenOptions={{
+			tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+			headerShown: false,
+			tabBarButton: HapticTab,
+			tabBarBackground: TabBarBackground,
+			tabBarStyle: Platform.select({
+			ios: {
+				// Use a transparent background on iOS to show the blur effect
+				position: 'absolute',
+			},
+			default: {},
+			}),
+		}}>
+		<Tabs.Screen
+			name="index"
+			options={{
+			title: 'Внутренний компас',
+			tabBarIcon: () => <Entypo name="compass" size={24} color="black" />,
+			}}
+		/>
+		<Tabs.Screen
+			name="explore"
+			options={{
+			title: 'Точка опоры',
+			tabBarIcon: () => <FontAwesome5 name="fulcrum" size={28} color="black" />,
+			}}
+		/>
+		</Tabs>
+	);
 }
