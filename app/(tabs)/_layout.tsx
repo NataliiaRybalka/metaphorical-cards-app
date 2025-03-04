@@ -22,26 +22,25 @@ export default function TabLayout() {
 			tabBarBackground: TabBarBackground,
 			tabBarStyle: Platform.select({
 			ios: {
-				// Use a transparent background on iOS to show the blur effect
 				position: 'absolute',
 			},
 			default: {},
 			}),
 		}}>
-		<Tabs.Screen
-			name="index"
-			options={{
-			title: 'Внутренний компас',
-			tabBarIcon: () => <Entypo name="compass" size={24} color="black" />,
-			}}
-		/>
-		<Tabs.Screen
-			name="explore"
-			options={{
-			title: 'Точка опоры',
-			tabBarIcon: () => <FontAwesome5 name="fulcrum" size={28} color="black" />,
-			}}
-		/>
+			<Tabs.Screen
+				name="index"
+				options={{
+				title: 'Внутренний компас',
+				tabBarIcon: () => <Entypo name="compass" size={24} color="black" />,
+				}}
+			/>
+			<Tabs.Screen
+				name="explore"
+				options={{
+				title: 'Точка опоры',
+				tabBarIcon: () => <FontAwesome5 name="fulcrum" size={28} color="black" />,
+				}}
+			/>
 		</Tabs>
 	);
 }
