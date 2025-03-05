@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, RefreshControl } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -12,9 +12,29 @@ export default function HomeScreen() {
 		description: '',
 		fileName: '',
 	});
+	const [refreshing, setRefreshing] = useState(false);
+
+	const onRefresh = () => {
+		setRefreshing(true);
+		setTimeout(() => {
+			setAnswer({
+				description: '',
+				fileName: '',
+			});
+			setRefreshing(false);
+		}, 1000);
+	};
 
     return (
-        <ScrollView style={styles.scrollView}>
+        <ScrollView 
+			style={styles.scrollView} 
+			refreshControl={
+				<RefreshControl
+					refreshing={refreshing}
+					onRefresh={onRefresh}
+				/>
+			}
+		>
 			{
 				(!answer.description || !answer.fileName) 
 				? <>
