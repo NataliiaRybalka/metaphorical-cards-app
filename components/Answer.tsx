@@ -4,16 +4,12 @@ import { StyleSheet, ScrollView, TextInput, Pressable } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
-type Props = PropsWithChildren<{
-	type: string;
-	setAnswer: (question: string) => void;
-}>;
-
-export default function Question({ type, setAnswer }: Props) {
+export default function Answer() {
 	const [inputQuestion, setInputQuestion] = useState('');
-	
+	const [answer, setAnswer] = useState('');
+
 	const getResult = async () => {
-		setAnswer('answer');
+		console.log(inputQuestion);
 	};
 
 	return (
@@ -27,7 +23,7 @@ export default function Question({ type, setAnswer }: Props) {
 				<ThemedView style={styles.buttonContainer}>
 					<Pressable style={styles.button} onPress={getResult}>
 						<ThemedText>
-							Получить ответ
+							Ответ
 						</ThemedText>
 					</Pressable>
 				</ThemedView>
