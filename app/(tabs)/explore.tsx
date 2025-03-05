@@ -7,7 +7,7 @@ import { ThemedView } from '@/components/ThemedView';
 import Answer from '@/components/Answer';
 import Question from '@/components/Question';
 
-export default function HomeScreen() {
+export default function InternalCompassScreen() {
 	const [answer, setAnswer] = useState({
 		description: '',
 		fileName: '',
