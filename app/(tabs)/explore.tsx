@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
@@ -6,6 +7,11 @@ import { ThemedView } from '@/components/ThemedView';
 import Question from '@/components/Question';
 
 export default function HomeScreen() {
+	const [answer, setAnswer] = useState({
+		description: '',
+		path: '',
+	});
+	
 	return (
 		<ScrollView style={styles.scrollView}>
 			<ThemedView style={styles.titleContainer}>
@@ -18,7 +24,7 @@ export default function HomeScreen() {
 				</ThemedText>
 			</ThemedView>
 			
-			<Question type='fulcrum' />
+			<Question type='fulcrum' setAnswer={setAnswer} />
 		</ScrollView>
 	);
 }

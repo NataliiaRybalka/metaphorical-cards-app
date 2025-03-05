@@ -8,12 +8,15 @@ import Answer from '@/components/Answer';
 import Question from '@/components/Question';
 
 export default function HomeScreen() {
-	const [answer, setAnswer] = useState('');
+	const [answer, setAnswer] = useState({
+		description: '',
+		path: '',
+	});
 
     return (
         <ScrollView style={styles.scrollView}>
 			{
-				!answer 
+				(!answer.description || !answer.path) 
 				? <>
 					<ThemedView style={styles.titleContainer}>
 						<ThemedText type='title'>Внутренний компас</ThemedText>
@@ -25,7 +28,7 @@ export default function HomeScreen() {
 						</ThemedText>
 					</ThemedView>
 					
-					<Question type='compass' setAnswer={setAnswer} />
+					<Question type='internalCompass' setAnswer={setAnswer} />
 				</>
 				: <Answer />
 			}

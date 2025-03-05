@@ -1,4 +1,4 @@
-import { PropsWithChildren, useState } from 'react';
+import { useState } from 'react';
 import { StyleSheet, ScrollView, TextInput, Pressable } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
@@ -6,7 +6,10 @@ import { ThemedView } from '@/components/ThemedView';
 
 export default function Answer() {
 	const [inputQuestion, setInputQuestion] = useState('');
-	const [answer, setAnswer] = useState('');
+	const [answer, setAnswer] = useState({
+		description: '',
+		path: '',
+	});
 
 	const getResult = async () => {
 		console.log(inputQuestion);
@@ -49,5 +52,5 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 		alignItems: 'center',
 		width: 150
-	}
+	},
 });

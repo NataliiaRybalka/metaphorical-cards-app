@@ -4,16 +4,35 @@ import { StyleSheet, ScrollView, TextInput, Pressable } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
+import Fulcrum from '@/storage/fulcrum/fulcrum.json';
+import InternalCompass from '@/storage/internalCompass/internalCompass.json';
+
 type Props = PropsWithChildren<{
 	type: string;
-	setAnswer: (question: string) => void;
+	setAnswer: (answer: { description: string; path: string }) => void;
 }>;
+
+const jsonFiles = {
+	fulcrum: Fulcrum,
+	internalCompass: InternalCompass,
+}
 
 export default function Question({ type, setAnswer }: Props) {
 	const [inputQuestion, setInputQuestion] = useState('');
 	
 	const getResult = async () => {
-		setAnswer('answer');
+		const maxNum = type === 'Fulcrum' ? 60 : 59;
+		const random = Math.floor(Math.random() * (maxNum - 1 + 1)) + 1;
+
+		const key = `${type}_${random}.jpg` as keyof typeof InternalCompass;
+
+		console.log(`../storage/internalCompass/${key}`);
+		
+		// setAnswer({
+		// 	//@ts-ignore
+		// 	description: jsonFiles[type][key],
+		// 	path: `${RNFS.DocumentDirectoryPath}/myFile.txt`,
+		// });
 	};
 
 	return (
