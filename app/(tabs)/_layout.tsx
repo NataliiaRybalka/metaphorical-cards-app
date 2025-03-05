@@ -30,15 +30,15 @@ export default function TabLayout() {
 			<Tabs.Screen
 				name="index"
 				options={{
-				title: 'Внутренний компас',
-				tabBarIcon: () => <Entypo name="compass" size={24} color="black" />,
+					title: 'Внутренний компас',
+					tabBarIcon: () => <Entypo name="compass" size={24} color="black" />,
 				}}
 			/>
 			<Tabs.Screen
 				name="explore"
 				options={{
-				title: 'Точка опоры',
-				tabBarIcon: () => <FontAwesome5 name="fulcrum" size={28} color="black" />,
+					title: 'Точка опоры',
+					tabBarIcon: () => <FontAwesome5 name="fulcrum" size={28} color="black" />,
 				}}
 			/>
 		</Tabs>
