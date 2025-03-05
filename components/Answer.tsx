@@ -49,5 +49,5 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 		alignItems: 'center',
 		width: 150
-	},
+	}
 });
