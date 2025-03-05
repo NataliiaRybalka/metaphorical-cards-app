@@ -9,7 +9,7 @@ import InternalCompass from '@/storage/internalCompass/internalCompass.json';
 
 type Props = PropsWithChildren<{
 	type: string;
-	setAnswer: (answer: { description: string; path: string }) => void;
+	setAnswer: (answer: { description: string; fileName: string }) => void;
 }>;
 
 const jsonFiles = {
@@ -24,15 +24,13 @@ export default function Question({ type, setAnswer }: Props) {
 		const maxNum = type === 'Fulcrum' ? 60 : 59;
 		const random = Math.floor(Math.random() * (maxNum - 1 + 1)) + 1;
 
-		const key = `${type}_${random}.jpg` as keyof typeof InternalCompass;
-
-		console.log(`../storage/internalCompass/${key}`);
+		const fileName = `${type}_${random}.jpg` as keyof typeof InternalCompass;
 		
-		// setAnswer({
-		// 	//@ts-ignore
-		// 	description: jsonFiles[type][key],
-		// 	path: `${RNFS.DocumentDirectoryPath}/myFile.txt`,
-		// });
+		setAnswer({
+			//@ts-ignore
+			description: jsonFiles[type][fileName],
+			fileName,
+		});
 	};
 
 	return (

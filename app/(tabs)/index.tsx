@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
@@ -10,13 +10,13 @@ import Question from '@/components/Question';
 export default function HomeScreen() {
 	const [answer, setAnswer] = useState({
 		description: '',
-		path: '',
+		fileName: '',
 	});
 
     return (
         <ScrollView style={styles.scrollView}>
 			{
-				(!answer.description || !answer.path) 
+				(!answer.description || !answer.fileName) 
 				? <>
 					<ThemedView style={styles.titleContainer}>
 						<ThemedText type='title'>Внутренний компас</ThemedText>
@@ -30,7 +30,7 @@ export default function HomeScreen() {
 					
 					<Question type='internalCompass' setAnswer={setAnswer} />
 				</>
-				: <Answer />
+				: <Answer answer={answer} />
 			}
         </ScrollView>
     );

@@ -1,30 +1,37 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
+import Answer from '@/components/Answer';
 import Question from '@/components/Question';
 
 export default function HomeScreen() {
 	const [answer, setAnswer] = useState({
 		description: '',
-		path: '',
+		fileName: '',
 	});
 	
 	return (
 		<ScrollView style={styles.scrollView}>
-			<ThemedView style={styles.titleContainer}>
-				<ThemedText type='title'>Точка опоры</ThemedText>
-			</ThemedView>
-			
-			<ThemedView style={styles.stepContainer}>
-				<ThemedText>
-					это ресурсные карты. Там изображены позитивные сценки, пейзажи и абстракции, которые призваны вдохновить Тебя, подарить силы и радость. Такие карты дают возможность сформулировать новое решение, по-другому посмотреть на себя, обрести внутреннюю опору и найти внешний ресурс.
-				</ThemedText>
-			</ThemedView>
-			
-			<Question type='fulcrum' setAnswer={setAnswer} />
+			{
+				(!answer.description || !answer.fileName) 
+				? <>
+					<ThemedView style={styles.titleContainer}>
+						<ThemedText type='title'>Точка опоры</ThemedText>
+					</ThemedView>
+					
+					<ThemedView style={styles.stepContainer}>
+						<ThemedText>
+							это ресурсные карты. Там изображены позитивные сценки, пейзажи и абстракции, которые призваны вдохновить Тебя, подарить силы и радость. Такие карты дают возможность сформулировать новое решение, по-другому посмотреть на себя, обрести внутреннюю опору и найти внешний ресурс.
+						</ThemedText>
+					</ThemedView>
+					
+					<Question type='fulcrum' setAnswer={setAnswer} />
+				</>
+			: <Answer answer={answer} />
+			}
 		</ScrollView>
 	);
 }
