@@ -7,7 +7,7 @@ import { ThemedView } from '@/components/ThemedView';
 import Answer from '@/components/Answer';
 import Question from '@/components/Question';
 
-export default function InternalCompassScreen() {
+export default function FulcrumScreen() {
 	const [answer, setAnswer] = useState({
 		description: '',
 		fileName: '',
