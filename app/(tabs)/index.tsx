@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { PropsWithChildren, useCallback, useState } from 'react';
 import { StyleSheet, ScrollView, RefreshControl } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -7,11 +8,12 @@ import { ThemedView } from '@/components/ThemedView';
 import Answer from '@/components/Answer';
 import Question from '@/components/Question';
 
-export default function InternalCompassScreen() {
-	const [answer, setAnswer] = useState({
-		description: '',
-		fileName: '',
-	});
+type Props = PropsWithChildren<{
+	answer: { description: string; fileName: string };
+	setAnswer: (answer: { description: string; fileName: string }) => void;
+}>;
+
+export default function InternalCompassScreen({ answer, setAnswer }: Props) {
 	const [refreshing, setRefreshing] = useState(false);
 
 	const onRefresh = () => {
@@ -24,6 +26,15 @@ export default function InternalCompassScreen() {
 			setRefreshing(false);
 		}, 1000);
 	};
+
+	useFocusEffect(
+		useCallback(() => {
+			setAnswer({
+				description: '',
+				fileName: ''
+			});
+		}, [setAnswer])
+	);
 
     return (
         <ScrollView 

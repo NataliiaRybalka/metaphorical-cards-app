@@ -1,6 +1,6 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import React, { useState } from 'react';
 import { Platform } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
@@ -10,11 +10,25 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 import Entypo from '@expo/vector-icons/Entypo';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
+import InternalCompassScreen from './index';
+import FulcrumScreen from './explore';
+
+const Tab = createBottomTabNavigator();
+
 export default function TabLayout() {
 	const colorScheme = useColorScheme();
 
+	const [internalCompassAnswer, setInternalCompassAnswer] = useState({
+		description: '',
+		fileName: '',
+	});
+	const [fulcrumAnswer, setFulcrumAnswer] = useState({
+		description: '',
+		fileName: '',
+	});
+
 	return (
-		<Tabs
+		<Tab.Navigator
 			screenOptions={{
 				tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
 				headerShown: false,
@@ -28,20 +42,24 @@ export default function TabLayout() {
 				}),
 			}}
 		>
-			<Tabs.Screen
+			<Tab.Screen
 				name='index'
 				options={{
 					title: 'Внутренний компас',
 					tabBarIcon: () => <Entypo name="compass" size={24} color="black" />,
 				}}
-			/>
-			<Tabs.Screen
+			>
+				{() => <InternalCompassScreen answer={internalCompassAnswer} setAnswer={setInternalCompassAnswer} />}
+			</Tab.Screen>
+			<Tab.Screen
 				name='explore'
 				options={{
 					title: 'Точка опоры',
 					tabBarIcon: () => <FontAwesome5 name="fulcrum" size={28} color="black" />,
 				}}
-			/>
-		</Tabs>
+			>
+				{() => <FulcrumScreen answer={fulcrumAnswer} setAnswer={setFulcrumAnswer} />}
+			</Tab.Screen>
+		</Tab.Navigator>
 	);
 }
