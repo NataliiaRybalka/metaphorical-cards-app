@@ -68,7 +68,8 @@ const styles = StyleSheet.create({
 		backgroundColor: 'darkgrey',
 		marginTop: 10,
 		marginBottom: 10,
+		padding: 10,
 		alignItems: 'center',
-		width: 150
+		width: 200
 	},
 });
