@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
 		backgroundColor: 'lightgrey',
 		marginLeft: 10,
 		marginRight: 10,
+		height: 40,
 	},
 	buttonContainer: {
 		flex: 1,
