@@ -26,11 +26,21 @@ export default function Answer({ answer }: Props) {
 				<FlipCard flipHorizontal={true} flipVertical={false} style={styles.flipCard}>
 					<ThemedView>
 						<Image source={cardsPaths[answer.fileName]} style={styles.image} />
+
+						<ThemedText style={styles.disclaimer}>
+							Нажми на картинку, чтобы прочитать значение
+						</ThemedText>
 					</ThemedView>
 
-					<ThemedText style={styles.description}>
-						{description}
-					</ThemedText>
+					<ThemedView>
+						<ThemedText style={styles.description}>
+							{description}
+						</ThemedText>
+
+						<ThemedText style={styles.disclaimer}>
+							Нажми на текст, чтобы вернуться к картинке
+						</ThemedText>
+					</ThemedView>
 				</FlipCard>
 			</ThemedView>
 		</ScrollView>
@@ -55,5 +65,11 @@ const styles = StyleSheet.create({
 	description: {
 		paddingTop: 50,
 		paddingBottom: 50,
+	},
+	disclaimer: {
+		textAlign: 'center',
+		fontSize: 12,
+		paddingTop: 10,
+		color: 'gray',
 	},
 });
