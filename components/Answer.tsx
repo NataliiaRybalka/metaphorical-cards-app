@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { StyleSheet, ScrollView, Image } from 'react-native';
+import { StyleSheet, ScrollView, Image, useWindowDimensions } from 'react-native';
 import FlipCard from 'react-native-flip-card';
 
 import { ThemedText } from '@/components/ThemedText';
@@ -12,20 +12,26 @@ type Props = PropsWithChildren<{
 }>;
 
 export default function Answer({ answer }: Props) {
+	const screenHeight = useWindowDimensions().height;
+	const imageHeight = screenHeight < 1000 ? '80%' : '90%';
+
 	const splitedAnswer = answer.description.split("'");
 	const title = splitedAnswer[1];
 	const description = splitedAnswer[2];
 
 	return (
 		<ScrollView>
-			<ThemedView>
+			<ThemedView style={{flex: 1, height: screenHeight,}}>
 				<ThemedText type='defaultSemiBold' style={styles.title}>
 					{title}
 				</ThemedText>
 
 				<FlipCard flipHorizontal={true} flipVertical={false} style={styles.flipCard}>
 					<ThemedView>
-						<Image source={cardsPaths[answer.fileName]} style={styles.image} />
+						<Image
+							source={cardsPaths[answer.fileName]}
+							style={{width: '100%', height: '90%', borderRadius: 10}}
+						/>
 
 						<ThemedText style={styles.disclaimer}>
 							Нажми на картинку, чтобы прочитать значение
@@ -52,11 +58,6 @@ const styles = StyleSheet.create({
 		padding: 10,
 		textAlign: 'center',
 		fontSize: 20
-	},
-	image: {
-		width: '100%',
-		height: 500,
-		borderRadius: 10
 	},
 	flipCard: {
 		padding: 10,
