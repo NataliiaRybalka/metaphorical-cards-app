@@ -30,7 +30,7 @@ export default function Answer({ answer }: Props) {
 					<ThemedView>
 						<Image
 							source={cardsPaths[answer.fileName]}
-							style={{width: '100%', height: '90%', borderRadius: 10}}
+							style={{width: '100%', height: imageHeight, borderRadius: 10}}
 						/>
 
 						<ThemedText style={styles.disclaimer}>
