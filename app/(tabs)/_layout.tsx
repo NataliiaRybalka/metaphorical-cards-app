@@ -70,7 +70,11 @@ export default function TabLayout() {
 					setModalVisible={setModalVisible}
 					setLanguage={setLanguage}
 				/>
-				: <InternalCompassScreen answer={internalCompassAnswer} setAnswer={setInternalCompassAnswer} />}
+				: <InternalCompassScreen
+					answer={internalCompassAnswer}
+					setAnswer={setInternalCompassAnswer}
+					language={language}
+				/>}
 			</Tab.Screen>
 			<Tab.Screen
 				name='explore'
@@ -79,7 +83,7 @@ export default function TabLayout() {
 					tabBarIcon: () => <FontAwesome5 name='fulcrum' size={28} color='black' />,
 				}}
 			>
-				{() => <FulcrumScreen answer={fulcrumAnswer} setAnswer={setFulcrumAnswer} />}
+				{() => <FulcrumScreen answer={fulcrumAnswer} setAnswer={setFulcrumAnswer} language={language} />}
 			</Tab.Screen>
 		</Tab.Navigator>
 	);

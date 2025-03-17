@@ -10,6 +10,7 @@ import InternalCompass from '@/storage/internalCompass/internalCompass.json';
 type Props = PropsWithChildren<{
 	type: string;
 	setAnswer: (answer: { description: string; fileName: string }) => void;
+	language: string;
 }>;
 
 const jsonFiles = {
@@ -17,18 +18,18 @@ const jsonFiles = {
 	internalCompass: InternalCompass,
 }
 
-export default function Question({ type, setAnswer }: Props) {
+export default function Question({ type, setAnswer, language }: Props) {
 	const [inputQuestion, setInputQuestion] = useState('');
 	
 	const getResult = async () => {
 		const maxNum = type === 'Fulcrum' ? 60 : 59;
 		const random = Math.floor(Math.random() * (maxNum - 1 + 1)) + 1;
-
-		const fileName = `${type}_${random}.jpg` as keyof typeof InternalCompass;
 		
+		const fileName = `${type}_${random}.jpg` as keyof typeof InternalCompass;
+
 		setAnswer({
 			//@ts-ignore
-			description: jsonFiles[type][fileName],
+			description: jsonFiles[type][fileName][language],
 			fileName,
 		});
 	};

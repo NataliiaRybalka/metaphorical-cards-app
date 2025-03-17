@@ -11,9 +11,10 @@ import Question from '@/components/Question';
 type Props = PropsWithChildren<{
 	answer: { description: string; fileName: string };
 	setAnswer: (answer: { description: string; fileName: string }) => void;
+	language: string;
 }>;
 
-export default function FulcrumScreen({ answer, setAnswer }: Props) {
+export default function FulcrumScreen({ answer, setAnswer, language }: Props) {
 	const [refreshing, setRefreshing] = useState(false);
 
 	const onRefresh = () => {
@@ -59,7 +60,7 @@ export default function FulcrumScreen({ answer, setAnswer }: Props) {
 						</ThemedText>
 					</ThemedView>
 					
-					<Question type='fulcrum' setAnswer={setAnswer} />
+					<Question type='fulcrum' setAnswer={setAnswer} language={language} />
 				</>
 			: <Answer answer={answer} />
 			}
