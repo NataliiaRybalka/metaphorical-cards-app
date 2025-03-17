@@ -1,4 +1,4 @@
-import { PropsWithChildren, useCallback, useState, useEffect } from 'react';
+import { PropsWithChildren, useCallback, useState } from 'react';
 import { StyleSheet, ScrollView, RefreshControl } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 
