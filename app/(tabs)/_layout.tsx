@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
@@ -27,20 +26,6 @@ export default function TabLayout() {
 		description: '',
 		fileName: '',
 	});
-	const [language, setLanguage] = useState('');
-
-	const getStorageData = async () => {
-		const value = await AsyncStorage.getItem('language');
-		if (value !== null) setLanguage(value);
-	};
-
-	const storeData = async () => {
-		await AsyncStorage.setItem('language', language);
-	};
-
-	useEffect(() => {
-		getStorageData();
-	}, []);
 
 	return (
 		<Tab.Navigator
