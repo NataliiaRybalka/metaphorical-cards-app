@@ -1,5 +1,5 @@
 import { useState, PropsWithChildren } from 'react';
-import { Modal, Text, Pressable, View, StyleSheet } from 'react-native';
+import { Modal, Text, Pressable, View, StyleSheet, ImageBackground } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RadioButton } from 'react-native-paper';
 

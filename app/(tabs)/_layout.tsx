@@ -7,6 +7,7 @@ import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import ModalWindow from '@/components/Modal';
 import i18n from '@/i18n';
 
 import Entypo from '@expo/vector-icons/Entypo';
@@ -14,7 +15,6 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 import InternalCompassScreen from './index';
 import FulcrumScreen from './explore';
-import ModalWindow from './modal';
 
 const Tab = createBottomTabNavigator();
 
@@ -45,7 +45,7 @@ export default function TabLayout() {
 	};
 
 	useEffect(() => {
-		// AsyncStorage.removeItem('language');
+		AsyncStorage.removeItem('language');
 		getStorageData();
 	}, []);
 
