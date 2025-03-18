@@ -3,6 +3,8 @@ import { Modal, Text, Pressable, View, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RadioButton } from 'react-native-paper';
 
+import i18n from '@/i18n';
+
 type Props = PropsWithChildren<{
 	modalVisible: boolean;
 	setModalVisible: (modalVisible: boolean) => void;
@@ -20,6 +22,7 @@ export default function ModalWindow({
 		setModalVisible(!modalVisible);
 		await AsyncStorage.setItem('language', chosenLanguage);
 		setLanguage(chosenLanguage);
+		i18n.changeLanguage(chosenLanguage);
 	};
 	
 	return (

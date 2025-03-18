@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { StyleSheet, ScrollView, Image, useWindowDimensions } from 'react-native';
 import FlipCard from 'react-native-flip-card';
+import { useTranslation } from 'react-i18next';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -12,6 +13,8 @@ type Props = PropsWithChildren<{
 }>;
 
 export default function Answer({ answer }: Props) {
+	const { t } = useTranslation();
+
 	const screenHeight = useWindowDimensions().height;
 	const imageHeight = screenHeight < 1000 ? '80%' : '90%';
 
@@ -34,7 +37,7 @@ export default function Answer({ answer }: Props) {
 						/>
 
 						<ThemedText style={styles.disclaimer}>
-							Нажми на картинку, чтобы прочитать значение
+							{t('Click on the image to read the meaning')}
 						</ThemedText>
 					</ThemedView>
 
@@ -44,7 +47,7 @@ export default function Answer({ answer }: Props) {
 						</ThemedText>
 
 						<ThemedText style={styles.disclaimer}>
-							Нажми на текст, чтобы вернуться к картинке
+							{t('Click on the text to return to the image')}
 						</ThemedText>
 					</ThemedView>
 				</FlipCard>

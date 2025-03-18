@@ -1,5 +1,6 @@
 import { PropsWithChildren, useState } from 'react';
 import { StyleSheet, ScrollView, TextInput, Pressable } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -19,6 +20,8 @@ const jsonFiles = {
 }
 
 export default function Question({ type, setAnswer, language }: Props) {
+	const { t } = useTranslation();
+	
 	const [inputQuestion, setInputQuestion] = useState('');
 	
 	const getResult = async () => {
@@ -38,14 +41,14 @@ export default function Question({ type, setAnswer, language }: Props) {
 		<ScrollView>
 			<ThemedView>
 				<ThemedText type='defaultSemiBold'>
-					Напиши свой вопрос:
+					{t('Write your question')}:
 				</ThemedText>
 				<TextInput style={styles.input} value={inputQuestion} onChangeText={setInputQuestion} />
 
 				<ThemedView style={styles.buttonContainer}>
 					<Pressable style={styles.button} onPress={getResult}>
 						<ThemedText>
-							Получить ответ
+							{t('Get an answer')}
 						</ThemedText>
 					</Pressable>
 				</ThemedView>

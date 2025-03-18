@@ -1,6 +1,7 @@
 import { PropsWithChildren, useCallback, useState } from 'react';
 import { StyleSheet, ScrollView, RefreshControl } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -15,6 +16,8 @@ type Props = PropsWithChildren<{
 }>;
 
 export default function InternalCompassScreen({ answer, setAnswer, language }: Props) {
+	const { t } = useTranslation();
+
 	const [refreshing, setRefreshing] = useState(false);
 
 	const onRefresh = () => {
@@ -51,12 +54,12 @@ export default function InternalCompassScreen({ answer, setAnswer, language }: P
 				(!answer.description || !answer.fileName) 
 				? <>
 					<ThemedView style={styles.titleContainer}>
-						<ThemedText type='title'>Внутренний компас</ThemedText>
+						<ThemedText type='title'>{t('Internal compass')}</ThemedText>
 					</ThemedView>
 				
 					<ThemedView style={styles.stepContainer}>
 						<ThemedText>
-							является универсальной колодой с большим набором самых разных образов и сцен, которые подходят для проработки почти любой ситуации. Она энергетически наполненная и очень гармонично отражает всё происходящее внутри человека.
+							{t('Internal compass description')}
 						</ThemedText>
 					</ThemedView>
 					

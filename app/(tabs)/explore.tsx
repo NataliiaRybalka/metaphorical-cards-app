@@ -1,6 +1,7 @@
 import { PropsWithChildren, useCallback, useState } from 'react';
 import { StyleSheet, ScrollView, RefreshControl } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -15,6 +16,8 @@ type Props = PropsWithChildren<{
 }>;
 
 export default function FulcrumScreen({ answer, setAnswer, language }: Props) {
+	const { t } = useTranslation();
+
 	const [refreshing, setRefreshing] = useState(false);
 
 	const onRefresh = () => {
@@ -51,12 +54,12 @@ export default function FulcrumScreen({ answer, setAnswer, language }: Props) {
 				(!answer.description || !answer.fileName) 
 				? <>
 					<ThemedView style={styles.titleContainer}>
-						<ThemedText type='title'>Точка опоры</ThemedText>
+						<ThemedText type='title'>{t('Fulcrum')}</ThemedText>
 					</ThemedView>
 					
 					<ThemedView style={styles.stepContainer}>
 						<ThemedText>
-							это ресурсные карты. Там изображены позитивные сцены, пейзажи и абстракции, которые призваны вдохновить Тебя, подарить силы и радость. Такие карты дают возможность сформулировать новое решение, по-другому посмотреть на себя, обрести внутреннюю опору и найти внешний ресурс.
+							{t('Fulcrum description')}
 						</ThemedText>
 					</ThemedView>
 					

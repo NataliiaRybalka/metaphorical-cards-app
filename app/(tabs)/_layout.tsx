@@ -7,6 +7,7 @@ import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import i18n from '@/i18n';
 
 import Entypo from '@expo/vector-icons/Entypo';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
@@ -33,10 +34,16 @@ export default function TabLayout() {
 
 	const getStorageData = async () => {
 		const value = await AsyncStorage.getItem('language');
-		if (value !== null) setLanguage(value);
-		else setModalVisible(true)
+		if (value !== null) {
+			setLanguage(value);
+			i18n.changeLanguage(value);
+		}
+		else {
+			setModalVisible(true)
+			i18n.changeLanguage('en');
+		}
 	};
-	
+
 	useEffect(() => {
 		// AsyncStorage.removeItem('language');
 		getStorageData();
@@ -60,7 +67,7 @@ export default function TabLayout() {
 			<Tab.Screen
 				name='index'
 				options={{
-					title: 'Внутренний компас',
+					title: language === 'ru' ? 'Внутренний компас' : 'Internal compass',
 					tabBarIcon: () => <Entypo name='compass' size={24} color='black' />,
 				}}
 			>
@@ -79,7 +86,7 @@ export default function TabLayout() {
 			<Tab.Screen
 				name='explore'
 				options={{
-					title: 'Точка опоры',
+					title: language === 'ru' ? 'Точка опоры' : 'Fulcrum',
 					tabBarIcon: () => <FontAwesome5 name='fulcrum' size={28} color='black' />,
 				}}
 			>
