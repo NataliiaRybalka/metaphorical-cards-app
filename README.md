@@ -14,3 +14,4 @@ Metaphorical Cards app was built using the following technologies:
 
 -   **React Native**: Mobile app framework for Android.
 -   **Expo**: React Native framework.
+-	**i18next**: For multiple languages
