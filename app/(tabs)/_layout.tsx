@@ -45,7 +45,7 @@ export default function TabLayout() {
 	};
 
 	useEffect(() => {
-		AsyncStorage.removeItem('language');
+		// AsyncStorage.removeItem('language');
 		getStorageData();
 	}, []);
 
