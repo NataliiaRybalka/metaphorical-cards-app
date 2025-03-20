@@ -59,8 +59,9 @@ export default function Answer({ answer }: Props) {
 const styles = StyleSheet.create({
 	title: {
 		padding: 10,
+		paddingTop: 30,
 		textAlign: 'center',
-		fontSize: 20
+		fontSize: 30,
 	},
 	flipCard: {
 		padding: 10,
@@ -69,6 +70,7 @@ const styles = StyleSheet.create({
 	description: {
 		paddingTop: 50,
 		paddingBottom: 50,
+		fontSize: 20,
 	},
 	disclaimer: {
 		textAlign: 'center',

@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		gap: 8,
-		paddingTop: 10,
+		paddingTop: 30,
 	},
 	stepContainer: {
 		gap: 8,

@@ -35,31 +35,35 @@ export function ThemedText({
 
 const styles = StyleSheet.create({
 	default: {
-		fontSize: 16,
+		fontSize: 18,
 		lineHeight: 24,
 		textAlign: 'justify',
 		paddingLeft: 10,
 		paddingRight: 10,
+		fontFamily: 'Forum'
 	},
 	defaultSemiBold: {
-		fontSize: 16,
+		fontSize: 18,
 		lineHeight: 24,
 		fontWeight: '600',
 		paddingLeft: 10,
 		paddingRight: 10,
+		fontFamily: 'Forum'
 	},
 	title: {
-		fontSize: 32,
-		fontWeight: 'bold',
+		fontSize: 34,
 		lineHeight: 32,
+		fontFamily: 'Forum'
 	},
 	subtitle: {
 		fontSize: 20,
 		fontWeight: 'bold',
+		fontFamily: 'Forum'
 	},
 	link: {
 		lineHeight: 30,
 		fontSize: 16,
 		color: '#0a7ea4',
+		fontFamily: 'Forum'
 	},
 });

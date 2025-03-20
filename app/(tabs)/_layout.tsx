@@ -53,6 +53,10 @@ export default function TabLayout() {
 		<Tab.Navigator
 			screenOptions={{
 				tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+				tabBarLabelStyle: {
+					fontFamily: 'Forum',
+					fontSize: 14,
+				},
 				headerShown: false,
 				tabBarButton: HapticTab,
 				tabBarBackground: TabBarBackground,
