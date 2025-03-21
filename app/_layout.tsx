@@ -16,6 +16,7 @@ export default function RootLayout() {
 	const [loaded] = useFonts({
 		SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
 		Forum: require('../assets/fonts/Forum-Regular.ttf'),
+		CormorantGaramond: require('../assets/fonts/CormorantGaramond-Regular.ttf'),
 	});
 
 	useEffect(() => {

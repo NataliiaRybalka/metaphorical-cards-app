@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 		textAlign: 'justify',
 		paddingLeft: 10,
 		paddingRight: 10,
-		fontFamily: 'Forum'
+		fontFamily: 'CormorantGaramond'
 	},
 	defaultSemiBold: {
 		fontSize: 18,
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 		fontWeight: '600',
 		paddingLeft: 10,
 		paddingRight: 10,
-		fontFamily: 'Forum'
+		fontFamily: 'CormorantGaramond'
 	},
 	title: {
 		fontSize: 34,
@@ -58,12 +58,12 @@ const styles = StyleSheet.create({
 	subtitle: {
 		fontSize: 20,
 		fontWeight: 'bold',
-		fontFamily: 'Forum'
+		fontFamily: 'CormorantGaramond'
 	},
 	link: {
 		lineHeight: 30,
 		fontSize: 16,
 		color: '#0a7ea4',
-		fontFamily: 'Forum'
+		fontFamily: 'CormorantGaramond'
 	},
 });

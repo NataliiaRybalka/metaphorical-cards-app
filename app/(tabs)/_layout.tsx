@@ -54,7 +54,7 @@ export default function TabLayout() {
 			screenOptions={{
 				tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
 				tabBarLabelStyle: {
-					fontFamily: 'Forum',
+					fontFamily: 'CormorantGaramond',
 					fontSize: 14,
 				},
 				headerShown: false,
