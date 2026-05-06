@@ -12,6 +12,7 @@
     "assets": "react-native-asset"
   },
   "dependencies": {
+    "@notifee/react-native": "^9.1.8",
     "@react-native-async-storage/async-storage": "^2.2.0",
     "@react-native-community/blur": "latest",
     "@react-navigation/bottom-tabs": "latest",

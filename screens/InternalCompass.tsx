@@ -1,6 +1,6 @@
 import { PropsWithChildren, useCallback, useState } from 'react';
 import { StyleSheet, ScrollView, RefreshControl } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
 import { ThemedText } from '@/components/ThemedText';
@@ -17,6 +17,8 @@ type Props = PropsWithChildren<{
 
 export default function InternalCompassScreen({ answer, setAnswer, language }: Props) {
 	const { t } = useTranslation();
+	const route = useRoute();
+	const navigation = useNavigation();
 
 	const [refreshing, setRefreshing] = useState(false);
 
@@ -33,11 +35,14 @@ export default function InternalCompassScreen({ answer, setAnswer, language }: P
 
 	useFocusEffect(
 		useCallback(() => {
-			setAnswer({
-				description: '',
-				fileName: ''
-			});
-		}, [setAnswer])
+			const dailyCard = (route.params as { dailyCard?: { description: string; fileName: string } } | undefined)?.dailyCard;
+			if (dailyCard) {
+				setAnswer({ description: dailyCard.description, fileName: dailyCard.fileName });
+				navigation.setParams({ dailyCard: undefined } as never);
+			} else {
+				setAnswer({ description: '', fileName: '' });
+			}
+		}, [setAnswer, route.params, navigation])
 	);
 
     return (
