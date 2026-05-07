@@ -39,8 +39,6 @@ export default function FulcrumScreen({ answer, setAnswer, language }: Props) {
 			if (dailyCard) {
 				setAnswer({ description: dailyCard.description, fileName: dailyCard.fileName });
 				navigation.setParams({ dailyCard: undefined } as never);
-			} else {
-				setAnswer({ description: '', fileName: '' });
 			}
 		}, [setAnswer, route.params, navigation])
 	);
