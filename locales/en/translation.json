@@ -17,5 +17,13 @@
     "You have two decks of cards at your disposal:": "You have two decks of cards at your disposal:",
     "Your daily card": "Your daily card",
     "Tap to see today's message": "Tap to see today's message",
-    "Daily card": "Daily card"
+    "Daily card": "Daily card",
+    "Settings": "Settings",
+    "Daily card notifications": "Daily card notifications",
+    "Notification time": "Notification time",
+    "Save": "Save",
+    "Saved": "Saved",
+    "Settings saved": "Settings saved",
+    "Invalid time": "Invalid time",
+    "Please enter hours 0-23 and minutes 0-59": "Please enter hours 0-23 and minutes 0-59"
 }

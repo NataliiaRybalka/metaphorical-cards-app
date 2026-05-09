@@ -14,48 +14,50 @@ import i18n from '@/i18n';
 const CHANNEL_ID = 'daily-card';
 const SCHEDULE_ID = 'daily-card-reminder';
 const BACKGROUND_PROMPT_KEY = 'backgroundExecutionPrompted';
-const HOURS = 10;
-const MINUTES = 0;
 
-function nextKyiv10AMTimestamp(): number {
+const ENABLED_KEY = 'notificationsEnabled';
+const HOUR_KEY = 'notificationHour';
+const MINUTE_KEY = 'notificationMinute';
+
+const DEFAULT_HOURS = 10;
+const DEFAULT_MINUTES = 0;
+
+export type NotificationSettings = {
+	enabled: boolean;
+	hour: number;
+	minute: number;
+};
+
+export async function getNotificationSettings(): Promise<NotificationSettings> {
+	const [enabledRaw, hourRaw, minuteRaw] = await Promise.all([
+		AsyncStorage.getItem(ENABLED_KEY),
+		AsyncStorage.getItem(HOUR_KEY),
+		AsyncStorage.getItem(MINUTE_KEY),
+	]);
+
+	const enabled = enabledRaw === null ? true : enabledRaw === '1';
+	const hour = hourRaw === null ? DEFAULT_HOURS : parseInt(hourRaw, 10);
+	const minute = minuteRaw === null ? DEFAULT_MINUTES : parseInt(minuteRaw, 10);
+
+	return { enabled, hour, minute };
+}
+
+export async function saveNotificationSettings(settings: NotificationSettings): Promise<void> {
+	await Promise.all([
+		AsyncStorage.setItem(ENABLED_KEY, settings.enabled ? '1' : '0'),
+		AsyncStorage.setItem(HOUR_KEY, String(settings.hour)),
+		AsyncStorage.setItem(MINUTE_KEY, String(settings.minute)),
+	]);
+}
+
+function nextLocalTimestamp(hour: number, minute: number): number {
 	const now = new Date();
-	const dtf = new Intl.DateTimeFormat('en-CA', {
-		timeZone: 'Europe/Kyiv',
-		year: 'numeric',
-		month: '2-digit',
-		day: '2-digit',
-		hour: '2-digit',
-		minute: '2-digit',
-		hour12: false,
-	});
-
-	const partsFor = (d: Date) =>
-		dtf.formatToParts(d).reduce<Record<string, number>>((acc, p) => {
-			if (p.type !== 'literal') acc[p.type] = parseInt(p.value, 10);
-			return acc;
-		}, {});
-
-	const utcForKyivWallClock = (y: number, m: number, d: number, h: number, mi: number) => {
-		const guess = Date.UTC(y, m - 1, d, h, mi);
-		const seen = partsFor(new Date(guess));
-		const seenAsUTC = Date.UTC(seen.year, seen.month - 1, seen.day, seen.hour, seen.minute);
-		const offset = seenAsUTC - guess;
-		return guess - offset;
-	};
-
-	const cur = partsFor(now);
-	let target = utcForKyivWallClock(cur.year, cur.month, cur.day, HOURS, MINUTES);
-	if (target <= now.getTime()) {
-		const tomorrow = new Date(Date.UTC(cur.year, cur.month - 1, cur.day + 1));
-		target = utcForKyivWallClock(
-			tomorrow.getUTCFullYear(),
-			tomorrow.getUTCMonth() + 1,
-			tomorrow.getUTCDate(),
-			HOURS,
-			MINUTES,
-		);
+	const target = new Date(now);
+	target.setHours(hour, minute, 0, 0);
+	if (target.getTime() <= now.getTime()) {
+		target.setDate(target.getDate() + 1);
 	}
-	return target;
+	return target.getTime();
 }
 
 export async function ensureNotificationChannel(): Promise<void> {
@@ -71,12 +73,16 @@ export async function requestNotificationPermission(): Promise<boolean> {
 	return settings.authorizationStatus === AuthorizationStatus.AUTHORIZED;
 }
 
-export async function scheduleDailyCardReminder(): Promise<void> {
+export async function cancelDailyCardReminder(): Promise<void> {
+	await notifee.cancelTriggerNotification(SCHEDULE_ID);
+}
+
+export async function scheduleDailyCardReminder(hour: number, minute: number): Promise<void> {
 	await notifee.cancelTriggerNotification(SCHEDULE_ID);
 
 	const trigger: TimestampTrigger = {
 		type: TriggerType.TIMESTAMP,
-		timestamp: nextKyiv10AMTimestamp(),
+		timestamp: nextLocalTimestamp(hour, minute),
 		repeatFrequency: RepeatFrequency.DAILY,
 		alarmManager: { type: AlarmType.SET_EXACT_AND_ALLOW_WHILE_IDLE },
 	};
@@ -118,9 +124,30 @@ async function promptBackgroundExecutionOnce(): Promise<void> {
 }
 
 export async function setupDailyCardNotifications(): Promise<void> {
+	const { enabled, hour, minute } = await getNotificationSettings();
+
+	if (!enabled) {
+		await cancelDailyCardReminder();
+		return;
+	}
+
 	const granted = await requestNotificationPermission();
 	if (!granted) return;
 	await ensureNotificationChannel();
 	await promptBackgroundExecutionOnce();
-	await scheduleDailyCardReminder();
+	await scheduleDailyCardReminder(hour, minute);
+}
+
+export async function applyNotificationSettings(settings: NotificationSettings): Promise<void> {
+	await saveNotificationSettings(settings);
+
+	if (!settings.enabled) {
+		await cancelDailyCardReminder();
+		return;
+	}
+
+	const granted = await requestNotificationPermission();
+	if (!granted) return;
+	await ensureNotificationChannel();
+	await scheduleDailyCardReminder(settings.hour, settings.minute);
 }

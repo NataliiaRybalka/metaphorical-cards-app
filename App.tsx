@@ -16,13 +16,13 @@ import 'react-native-reanimated';
 import RootNavigator from '@/navigation/RootNavigator';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { setupDailyCardNotifications } from '@/services/notifications';
-import { describeCard, getOrCreateTodaysCard } from '@/services/dailyCard';
+import { describeCard, pickDailyCard } from '@/services/dailyCard';
 import i18n from '@/i18n';
 
 const navigationRef = createNavigationContainerRef();
 
 async function navigateToTodaysCard() {
-	const card = await getOrCreateTodaysCard();
+	const card = pickDailyCard();
 	const language = (await AsyncStorage.getItem('language')) || 'en';
 	const description = describeCard(card, language);
 	const tab = card.deck === 'fulcrum' ? 'explore' : 'index';

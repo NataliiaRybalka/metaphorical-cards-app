@@ -3,6 +3,7 @@ import { Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Entypo from 'react-native-vector-icons/Entypo';
+import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import { HapticTab } from '@/components/HapticTab';
@@ -14,6 +15,7 @@ import i18n from '@/i18n';
 
 import InternalCompassScreen from '@/screens/InternalCompass';
 import FulcrumScreen from '@/screens/Fulcrum';
+import SettingsScreen from '@/screens/Settings';
 
 const Tab = createBottomTabNavigator();
 
@@ -94,6 +96,15 @@ export default function TabNavigator() {
 			>
 				{() => <FulcrumScreen answer={fulcrumAnswer} setAnswer={setFulcrumAnswer} language={language} />}
 			</Tab.Screen>
+			<Tab.Screen
+				name='settings'
+				options={{
+					title: language === 'ru' ? 'Настройки' : 'Settings',
+					tabBarIcon: () => <Feather name='settings' size={24} color='black' />,
+					// tabBarItemStyle: { flex: 0.8 },
+				}}
+				component={SettingsScreen}
+			/>
 		</Tab.Navigator>
 	);
 }

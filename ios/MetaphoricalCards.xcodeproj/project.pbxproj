@@ -15,6 +15,7 @@
 		A66885253E9747C0849DA054 /* CormorantGaramond-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9FB31F206C8640559F5D9D68 /* CormorantGaramond-Regular.ttf */; };
 		356E022F771D4D2F87C3D5FF /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 038715DF29A84B2795DC9B0D /* FontAwesome5_Solid.ttf */; };
 		279CFEC0E7E840EB9CD84F7B /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2D275E1C13943C48D69B0A4 /* Entypo.ttf */; };
+		FEA7E4F1B7A340A0BF000001 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEA7E4F1B7A340A0BF000002 /* Feather.ttf */; };
 		78C2D935DF3240F68A31CF6F /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 678874B174F444808503E7B8 /* FontAwesome5_Regular.ttf */; };
 		C3831065EA3942538A5EB3D1 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 38BE4B283A8841D1BCBF0A94 /* FontAwesome5_Brands.ttf */; };
 		FD7975B6C83940E09717EAD3 /* Forum.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 681C3419AC6E4B6D8C87B73E /* Forum.ttf */; };
@@ -37,6 +38,7 @@
 		9FB31F206C8640559F5D9D68 /* CormorantGaramond-Regular.ttf */ = {isa = PBXFileReference; name = "CormorantGaramond-Regular.ttf"; path = "../assets/fonts/CormorantGaramond-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		038715DF29A84B2795DC9B0D /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; name = "FontAwesome5_Solid.ttf"; path = "../assets/fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E2D275E1C13943C48D69B0A4 /* Entypo.ttf */ = {isa = PBXFileReference; name = "Entypo.ttf"; path = "../assets/fonts/Entypo.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FEA7E4F1B7A340A0BF000002 /* Feather.ttf */ = {isa = PBXFileReference; name = "Feather.ttf"; path = "../assets/fonts/Feather.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		678874B174F444808503E7B8 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; name = "FontAwesome5_Regular.ttf"; path = "../assets/fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		38BE4B283A8841D1BCBF0A94 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; name = "FontAwesome5_Brands.ttf"; path = "../assets/fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		681C3419AC6E4B6D8C87B73E /* Forum.ttf */ = {isa = PBXFileReference; name = "Forum.ttf"; path = "../assets/fonts/Forum.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
@@ -125,6 +127,7 @@
 				9FB31F206C8640559F5D9D68 /* CormorantGaramond-Regular.ttf */,
 				038715DF29A84B2795DC9B0D /* FontAwesome5_Solid.ttf */,
 				E2D275E1C13943C48D69B0A4 /* Entypo.ttf */,
+				FEA7E4F1B7A340A0BF000002 /* Feather.ttf */,
 				678874B174F444808503E7B8 /* FontAwesome5_Regular.ttf */,
 				38BE4B283A8841D1BCBF0A94 /* FontAwesome5_Brands.ttf */,
 				681C3419AC6E4B6D8C87B73E /* Forum.ttf */,
@@ -199,6 +202,7 @@
 				A66885253E9747C0849DA054 /* CormorantGaramond-Regular.ttf in Resources */,
 				356E022F771D4D2F87C3D5FF /* FontAwesome5_Solid.ttf in Resources */,
 				279CFEC0E7E840EB9CD84F7B /* Entypo.ttf in Resources */,
+				FEA7E4F1B7A340A0BF000001 /* Feather.ttf in Resources */,
 				78C2D935DF3240F68A31CF6F /* FontAwesome5_Regular.ttf in Resources */,
 				C3831065EA3942538A5EB3D1 /* FontAwesome5_Brands.ttf in Resources */,
 				FD7975B6C83940E09717EAD3 /* Forum.ttf in Resources */,

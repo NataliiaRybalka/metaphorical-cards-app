@@ -17,5 +17,13 @@
     "You have two decks of cards at your disposal:": "В Твоем распоряжении две колоды карт:",
     "Your daily card": "Твоя карта дня",
     "Tap to see today's message": "Нажми, чтобы увидеть сегодняшнее послание",
-    "Daily card": "Карта дня"
+    "Daily card": "Карта дня",
+    "Settings": "Настройки",
+    "Daily card notifications": "Уведомления карты дня",
+    "Notification time": "Время уведомления",
+    "Save": "Сохранить",
+    "Saved": "Сохранено",
+    "Settings saved": "Настройки сохранены",
+    "Invalid time": "Неверное время",
+    "Please enter hours 0-23 and minutes 0-59": "Введи часы 0-23 и минуты 0-59"
 }
