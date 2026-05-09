@@ -76,13 +76,14 @@ const styles = StyleSheet.create({
 		shadowOpacity: 0.25,
 		shadowRadius: 4,
 		elevation: 5,
-		fontFamily: 'CormorantGaramond',
+		fontFamily: 'CormorantGaramond-Regular',
 		fontSize: 18,
 	},
 	buttonContainer: {
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
+        marginTop: 10
 	},
 	button: {
 		backgroundColor: 'darkgrey',

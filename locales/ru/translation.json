@@ -14,5 +14,17 @@
     "Receive the message in the form of one card.": "Получи послание в виде одной карты.",
     "The first thought that came to your mind when you looked at her is the answer to your question.": "Первая мысль, которая пришла в голову, когда Ты взглянула на неё — это и есть ответ на Твой вопрос.",
     "Write this thought in a notepad or phone notes, and after a while return to it. Insights guaranteed!": "Запиши эту мысль в блокноте или заметках телефона, а спустя время вернись к ней. Инсайты обеспечены!",
-    "You have two decks of cards at your disposal:": "В Твоем распоряжении две колоды карт:"
+    "You have two decks of cards at your disposal:": "В Твоем распоряжении две колоды карт:",
+    "Your daily card": "Твоя карта дня",
+    "Tap to see today's message": "Нажми, чтобы увидеть сегодняшнее послание",
+    "Daily card": "Карта дня",
+    "Settings": "Настройки",
+    "Language": "Язык",
+    "Daily card notifications": "Уведомления карты дня",
+    "Notification time": "Время уведомления",
+    "Save": "Сохранить",
+    "Saved": "Сохранено",
+    "Settings saved": "Настройки сохранены",
+    "Invalid time": "Неверное время",
+    "Please enter hours 0-23 and minutes 0-59": "Введи часы 0-23 и минуты 0-59"
 }
