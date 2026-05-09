@@ -103,8 +103,9 @@ export default function TabNavigator() {
 					tabBarIcon: () => <Feather name='settings' size={24} color='black' />,
 					// tabBarItemStyle: { flex: 0.8 },
 				}}
-				component={SettingsScreen}
-			/>
+			>
+				{() => <SettingsScreen language={language} setLanguage={setLanguage} />}
+			</Tab.Screen>
 		</Tab.Navigator>
 	);
 }

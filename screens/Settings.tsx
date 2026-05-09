@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, ScrollView, TextInput, Pressable, Alert } from 'react-native';
-import { Switch } from 'react-native-paper';
+import { RadioButton, Switch } from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTranslation } from 'react-i18next';
 
 import { ThemedText } from '@/components/ThemedText';
@@ -9,10 +10,16 @@ import {
 	applyNotificationSettings,
 	getNotificationSettings,
 } from '@/services/notifications';
+import i18n from '@/i18n';
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
-export default function SettingsScreen() {
+type Props = {
+	language: string;
+	setLanguage: (language: string) => void;
+};
+
+export default function SettingsScreen({ language, setLanguage }: Props) {
 	const { t } = useTranslation();
 
 	const [enabled, setEnabled] = useState(true);
@@ -30,6 +37,13 @@ export default function SettingsScreen() {
 			setLoaded(true);
 		})();
 	}, []);
+
+	const onChangeLanguage = async (next: string) => {
+		if (next === language) return;
+		await AsyncStorage.setItem('language', next);
+		await i18n.changeLanguage(next);
+		setLanguage(next);
+	};
 
 	const onToggleEnabled = async (next: boolean) => {
 		setEnabled(next);
@@ -65,6 +79,22 @@ export default function SettingsScreen() {
 		<ScrollView style={styles.scrollView}>
 			<ThemedView style={styles.titleContainer}>
 				<ThemedText type='title'>{t('Settings')}</ThemedText>
+			</ThemedView>
+
+			<ThemedView style={styles.row}>
+				<ThemedText type='settings'>{t('Language')}</ThemedText>
+				<RadioButton.Group onValueChange={onChangeLanguage} value={language}>
+					<ThemedView style={styles.radioGroupHorizontal}>
+						<ThemedView style={styles.radioRow}>
+							<RadioButton value='ru' color='black' />
+							<ThemedText style={styles.radioLabel}>Ru</ThemedText>
+						</ThemedView>
+						<ThemedView style={styles.radioRow}>
+							<RadioButton value='en' color='black' />
+							<ThemedText style={styles.radioLabel}>En</ThemedText>
+						</ThemedView>
+					</ThemedView>
+				</RadioButton.Group>
 			</ThemedView>
 
 			<ThemedView style={styles.row}>
@@ -135,6 +165,17 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 20,
 		paddingVertical: 16,
 		gap: 8,
+	},
+	radioRow: {
+		flexDirection: 'row',
+		alignItems: 'center',
+	},
+	radioGroupHorizontal: {
+		flexDirection: 'row',
+		alignItems: 'center',
+	},
+	radioLabel: {
+		fontSize: 18,
 	},
 	timeRow: {
 		flexDirection: 'row',
